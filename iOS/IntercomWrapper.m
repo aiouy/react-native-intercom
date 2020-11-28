@@ -191,6 +191,20 @@ RCT_EXPORT_METHOD(displayHelpCenter :(RCTPromiseResolveBlock)resolve :(RCTPromis
     resolve([NSNull null]);
 };
 
+// Available as NativeModules.IntercomWrapper.displayArticle
+RCT_EXPORT_METHOD(displayArticle:(NSString*)articleString :(RCTPromiseResolveBlock)resolve :(RCTPromiseRejectBlock)reject) {
+    NSLog(@"displayArticle with %@", articleString);
+    
+    UIViewController *controller = RCTPresentedViewController();
+    [RCTUtilsUIOverride setPresentedViewController:controller];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [Intercom presentArticle:articleString];
+    });
+
+    resolve([NSNull null]);
+};
+
 // Available as NativeModules.IntercomWrapper.setLauncherVisibility
 RCT_EXPORT_METHOD(setLauncherVisibility:(NSString*)visibilityString resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSLog(@"setVisibility with %@", visibilityString);

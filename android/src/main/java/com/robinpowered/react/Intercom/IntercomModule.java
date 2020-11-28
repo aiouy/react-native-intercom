@@ -251,6 +251,17 @@ public class IntercomModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void displayArticle(String article, Promise promise) {
+        try {
+            Intercom.client().displayArticle(article);
+            promise.resolve(null);
+        } catch(Exception e) {
+            Log.e(TAG, "Intercom not initialized");
+            promise.reject(e.toString());
+        }
+    }
+
     private Intercom.Visibility visibilityStringToVisibility(String visibility) {
       if (visibility.equalsIgnoreCase("VISIBLE")) {
         return Intercom.Visibility.VISIBLE;

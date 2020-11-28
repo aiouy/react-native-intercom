@@ -297,9 +297,9 @@ Intercom.displayMessenger();
 Intercom.displayConversationsList();
 ```
 
-### Display Help Center
+### Display Article
 ```javascript
-Intercom.displayHelpCenter();
+Intercom.displayArticle('123456');
 ```
 
 ### Set Bottom Padding
